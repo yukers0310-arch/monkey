@@ -1,6 +1,6 @@
 @font-face {
   font-family: "k-font";
-  src: url("k-font/keifont.woff");
+  src: url("keifont.woff");
 }
 
 body {
@@ -188,3 +188,4 @@ footer {
   margin-top: 20px;
   /* 上に少し余白を追加 */
 }
+
