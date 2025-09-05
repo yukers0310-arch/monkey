@@ -189,5 +189,7 @@ footer {
   /* 上に少し余白を追加 */
 }
 a:hover {
-  cursor: url('monkeypointer2.png') 21 5, pointer;
+  /* cursor: url('monkeypointer2.png') 21 5, pointer; */
+   outline: 2px solid red !important; /* ← テスト用にこの行を追加 */
+
 }
