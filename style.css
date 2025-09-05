@@ -1,0 +1,190 @@
+@font-face {
+  font-family: "k-font";
+  src: url("k-font/keifont.woff");
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.7;
+  color: #333;
+  background-color: #fffaf2;
+  margin: 0;
+  padding: 0;
+  font-size: 120%;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  color: #fff;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1,
+h2,
+h3,
+nav,
+header {
+  font-family: "k-font", sans-serif;
+}
+
+.logo-container {
+  width: 80%;
+  max-width: 1000px;
+  height: 100px;
+  /* ← ここで表示したい高さを指定 */
+  overflow: hidden;
+  /* 窓枠からはみ出した画像を隠す */
+  margin: 0 auto;
+}
+
+/* 中の画像のスタイルを変更 */
+.header-logo {
+  width: 100%;
+  height: 100%;
+  /* 縦横比を維持したまま、窓枠を埋め尽くすように調整 */
+  object-fit: cover;
+}
+
+header p {
+  margin: 0;
+  font-size: 1.3vw;
+  color: black;
+  -webkit-text-stroke: 0.3px rgb(255, 255, 255);
+}
+
+nav {
+  background-color: #fc929e;
+  padding: 0;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a {
+  font-size: 1.3em;
+  /* 基本文字サイズの1.3倍の大きさにする */
+  padding: 15px 0;
+  /* 文字の上下に余白を持たせ、バーの高さを調整 */
+  display: inline-block;
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  -webkit-text-stroke: 0.1px rgb(49, 49, 49);
+}
+
+nav a:hover {
+  text-decoration: underline;
+  color: #d17a85;
+}
+
+section {
+  background-color: white;
+  margin-bottom: 20px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-left: 5px solid #f9a7b0;
+}
+
+h2 {
+  font-size: 1.8em;
+  color: #e83e8c;
+  border-bottom: 2px solid #f9a7b0;
+  padding-bottom: 10px;
+  margin-top: 0;
+}
+
+h3 {
+  font-size: 1.3em;
+  color: #333;
+  border-left: 4px solid #e83e8c;
+  padding-left: 10px;
+}
+
+.profile-grid {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.profile-grid img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 0px solid #111111;
+}
+
+ul,
+ol {
+  padding-left: 20px;
+}
+
+li {
+  margin-bottom: 10px;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+  font-size: 0.9em;
+  color: #777;
+  background-color: #fdecef;
+  border-top: 2px solid #f9a7b0;
+}
+
+.lang-switch {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  color: #333;
+}
+
+.lang-switch a {
+  color: #e83e8c;
+  text-decoration: none;
+}
+
+.lang-switch a:hover {
+  text-decoration: underline;
+}
+
+.item-with-image {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.item-with-image p {
+  margin: 0;
+}
+
+.item-with-image img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.outreach-image-container {
+  text-align: center;
+  /* div内のインライン要素（画像など）を中央揃え */
+  margin-top: 20px;
+  /* 上に少し余白を追加 */
+}
