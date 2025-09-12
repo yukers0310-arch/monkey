@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>うねうねスネークゲージ</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .background-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gauge-wrapper {
+            position: absolute;
+            /* ★★★ ここを修正 ★★★ */
+            top: 290px;
+            /* 244px - 50px */
+            left: 238px;
+            /* ★★★ ここまで ★★★ */
+            z-index: 1;
+            width: 240px;
+            height: 100px;
+            background-color: transparent;
+            padding: 0;
+        }
+
+        .text-container {
+            /* 親要素(.content-wrapper)の上部中央に配置 */
+            position: absolute;
+            top: 7%;
+            /* ★数値を小さくして上部に移動 (50% -> 15%) */
+            left: 45%;
+            /* 縦方向の位置調整(-50%)を削除 */
+            transform: translateX(-50%);
+            /* ★ここを変更 */
+
+            /* 文字が重なるための基準となる幅を指定 */
+            width: 150px;
+
+            /* 見た目の調整 (変更なし) */
+            z-index: 5;
+            pointer-events: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            font-family: 'k-font', sans-serif;
+        }
+
+        .text-container span {
+            /* 親要素(.text-container)を基準に配置 */
+            position: absolute;
+            width: 100%;
+            /* 親要素いっぱいに広げる */
+
+            /* ★★★ テキストを右揃えにする ★★★ */
+            text-align: right;
+
+            /* 透明度の変化を滑らかにする */
+            transition: opacity 0.5s ease;
+        }
+
+        #wavy-gauge-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            overflow: visible;
+        }
+
+        #wavy-gauge-svg path {
+            fill: none;
+        }
+
+        #gauge-border {
+            stroke: #000000;
+            stroke-width: 20;
+            stroke-linecap: round;
+            stroke-linejoin: miter;
+        }
+
+        #gauge-fill {
+            stroke: #DDAD81;
+            stroke-width: 12;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke-dasharray 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        input[type="range"] {
+            width: 80%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="lang-switch">
+            <a href="index-en.html" style="color: white">[English]</a>
+        </div>
+        <div class="logo-container">
+            <img src="Calling-Monkey-2025-9-6 (1).png" alt="f(monkey)ロゴ" class="header-logo">
+        </div>
+        <p>根地嶋勇人　研究者個人website</p>
+    </header>
+
+    <nav>
+        <a href="index.html">プロフィール</a>
+        <a href="research.html">研究内容</a>
+        <a href="publications.html">研究業績</a>
+        <a href="column.html">コラム</a>
+    </nav>
+
+
+    <div class="container">
+        <div class="content-wrapper">
+            <img src="tail_gauge.png" alt="背景画像" class="background-image">
+
+            <div class="gauge-wrapper">
+                <svg id="wavy-gauge-svg">
+
+                    <defs>
+                        <filter id="rough-texture" x="-50%" y="-50%" width="200%" height="200%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.04 0.08" numOctaves="5" result="noise" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R"
+                                yChannelSelector="G" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="text-container">
+                <span id="text-nihonzaru">ニホンザル</span>
+                <span id="text-akagezaru">アカゲザル</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <label for="percentage-slider">しっぽの長さ:</label>
+            <input type="range" id="percentage-slider" min="0" max="100" value="75">
+        </div>
+
+
+        <script src="tail_gauge.js"></script>
+
+    </div>
+
+    <div class="container">
+
+        <section>
+            <h2>似すぎているマカク　<br>
+            </h2>
+
+
+            <h3>概要</h3>
+            <p>　本当はニホンザルとアカゲザルの見た目にはもっと違いがあります。<br><br>
+            </p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Yuto Nejishima. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
