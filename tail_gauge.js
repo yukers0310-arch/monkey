@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     /**
-     * ゲージの長さを更新する（★★元の計算方法を維持★★）
+     * ゲージの長さを更新する（元の計算方法を維持）
      */
     function updateGaugeValue(percentage) {
         const pathLength = fillPath.getTotalLength();
@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const newPathData = createWavyPathData(time);
         fillPath.setAttribute('d', newPathData);
-        borderPath.setAttribute('d', newPathData); // タイポを修正済み
+        borderPath.setAttribute('d', newPathData);
         
         updateGaugeValue(slider.value); 
         
@@ -91,10 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --------------------------------------------------------------------
-    // § 5. イベントリスナーの設定
+    // § 5. イベントリスナーの設定 （★★ここを修正★★）
     // --------------------------------------------------------------------
     slider.addEventListener('input', (event) => {
-        updateGaugeValue(event.target.value); // ゲージ更新をここにも残します
+        // ↓↓↓ ゲージ更新の呼び出しをコメントアウト（無効化）する ↓↓↓
+        // updateGaugeValue(event.target.value); 
         updateTextOpacity(event.target.value);
     });
 
