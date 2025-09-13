@@ -34,6 +34,8 @@
             padding: 0;
         }
 
+
+
         .text-container {
             /* 親要素(.content-wrapper)の上部中央に配置 */
             position: absolute;
@@ -54,6 +56,11 @@
             font-weight: bold;
             color: #333;
             font-family: 'k-font', sans-serif;
+
+
+            -webkit-transform: translateX(-50%);
+            /* WebKit用の記述を追加 */
+            transform: translateX(-50%);
         }
 
         .text-container span {
@@ -92,6 +99,10 @@
             stroke-width: 12;
             stroke-linecap: round;
             stroke-linejoin: round;
+            transition: stroke-dasharray 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+
+            -webkit-transition: stroke-dasharray 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            /* WebKit用の記述を追加 */
             transition: stroke-dasharray 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
