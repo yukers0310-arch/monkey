@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     svgElement.appendChild(borderPath);
     svgElement.appendChild(fillPath);
 
-    // § 2. 波のアニメーション設定
+    // § 2. 波のアニメーション設定（一切変更ありません）
     const amplitude = 25;
     const frequency = 0.05;
     const travelSpeed = 10;
@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // § 3. 関数の定義
 
     /**
-     * SVGパスの描画データを生成する
+     * SVGのパスデータを生成する（うねりの計算式は一切変更ありません）
      */
     function createWavyPathData(offset) {
         const width = svgElement.clientWidth;
@@ -47,25 +47,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         return pathData;
     }
-    
-    /**
-     * SVGパスを描画するだけのシンプルな関数 (★★新規★★)
-     */
-    function drawPath(timeOffset) {
-        const pathData = createWavyPathData(timeOffset);
-        fillPath.setAttribute('d', pathData);
-        borderPath.setAttribute('d', pathData);
-    }
 
     /**
-     * ゲージの長さを更新する (★★修正★★)
+     * ゲージの長さを更新する（★★pathLengthを使った最も高速な方法★★）
      */
     function updateGaugeValue(percentage) {
-        // getTotalLengthの前に描画処理をしないように変更
-        const pathLength = fillPath.getTotalLength();
-        if (pathLength === 0) return;
-        const fillLength = pathLength * (percentage / 100);
-        const dashArrayValue = `${fillLength} ${pathLength}`;
+        const dashArrayValue = `${percentage} 100`;
         fillPath.style.strokeDasharray = dashArrayValue;
     }
 
@@ -83,32 +70,33 @@ document.addEventListener('DOMContentLoaded', () => {
         time += 0.02;
         if (time > 10000) time = 0;
 
-        drawPath(time); // パスを描画
-        updateGaugeValue(slider.value); // ゲージを更新
+        const newPathData = createWavyPathData(time);
+        fillPath.setAttribute('d', newPathData);
+        borderPath.setAttribute('d', newPathData);
+        
+        updateGaugeValue(slider.value); 
         
         requestAnimationFrame(animate);
     }
 
     // § 5. イベントリスナーの設定
     slider.addEventListener('input', (event) => {
-        updateGaugeValue(event.target.value); 
         updateTextOpacity(event.target.value);
     });
 
-    // § 6. 初期化処理 (★★ここが最重要★★)
+    // § 6. 初期化処理
     updateTextOpacity(slider.value);
     borderPath.setAttribute('filter', `url(#rough-texture)`);
 
-    window.addEventListener('load', () => {
-        // 1. まず静的な波（t=0）を描画だけする
-        drawPath(0);
+    // ↓↓↓ ★★★ パフォーマンス改善の鍵 ★★★ ↓↓↓
+    // fillPathの全長を、見た目に関わらず常に「100」として扱うようにSVGに教える
+    fillPath.setAttribute('pathLength', '100');
 
-        // 2. ブラウザが最初のフレームを描画するのを待つ
+    // ページが完全に読み込まれてからアニメーションを開始
+    window.addEventListener('load', () => {
+        // 最初のフレームを描画した直後にゲージを更新し、その後アニメーションを開始
         requestAnimationFrame(() => {
-            // 3. 描画が終わったので、正しいサイズでゲージの初期値を設定
             updateGaugeValue(slider.value);
-            
-            // 4. その後、本格的なアニメーションループを開始
             animate();
         });
     });
