@@ -103,11 +103,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // § 6. 初期化処理
     // --------------------------------------------------------------------
     updateTextOpacity(slider.value);
-    
     borderPath.setAttribute('filter', `url(#rough-texture)`);
 
-    // ページが完全に読み込まれてからアニメーションを開始
+    // ページが完全に読み込まれてから、さらに少し待ってアニメーションを開始
     window.addEventListener('load', () => {
-        animate();
+        setTimeout(() => {
+            animate();
+        }, 100); // 100ミリ秒（0.1秒）待つ
     });
 });
