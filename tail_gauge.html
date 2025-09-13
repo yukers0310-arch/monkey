@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>うねうねスネークゲージ</title>
     <link rel="stylesheet" href="style.css">
     <style>
@@ -22,17 +21,20 @@
 
         .gauge-wrapper {
             position: absolute;
-            /* ★★★ ここを修正 ★★★ */
-            top: 290px;
-            /* 244px - 50px */
-            left: 238px;
-            /* ★★★ ここまで ★★★ */
+            top: 70%;
+            /* 例: 上から48%の位置 */
+            left: 60%;
+            /* 例: 左から39%の位置 */
+            width: 40%;
+            /* 例: 親要素の40%の幅 */
             z-index: 1;
             width: 240px;
             height: 100px;
             background-color: transparent;
             padding: 0;
         }
+
+
 
 
 
@@ -57,10 +59,6 @@
             color: #333;
             font-family: 'k-font', sans-serif;
 
-
-            -webkit-transform: translateX(-50%);
-            /* WebKit用の記述を追加 */
-            transform: translateX(-50%);
         }
 
         .text-container span {
@@ -99,10 +97,6 @@
             stroke-width: 12;
             stroke-linecap: round;
             stroke-linejoin: round;
-            transition: stroke-dasharray 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-
-            -webkit-transition: stroke-dasharray 0.5s cubic-bezier(0.23, 1, 0.32, 1);
-            /* WebKit用の記述を追加 */
             transition: stroke-dasharray 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
 
