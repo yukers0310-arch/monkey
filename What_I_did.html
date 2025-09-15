@@ -12,6 +12,7 @@
             border-collapse: collapse;
             margin-top: 20px;
             font-size: 0.9em;
+            table-layout: fixed;
         }
 
         table th,
@@ -22,21 +23,32 @@
             vertical-align: top;
         }
 
+        /* Date column: keep as short as possible without wrapping */
+        table th:first-child,
+        table td:first-child {
+            width: auto;
+            min-width: 12ch; /* ensure full date like 2025/09/15 fits */
+            white-space: nowrap;
+        }
+
+        /* Other columns: share remaining space and allow wrapping */
+        table th:not(:first-child),
+        table td:not(:first-child) {
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+
         table th {
             background-color: #fc929e;
             color: white;
             font-family: "k-font", sans-serif;
             font-weight: bold;
             -webkit-text-stroke: 0.1px rgb(49, 49, 49);
+            font-size: 1.5em;
         }
 
         table tbody tr:nth-child(even) {
             background-color: #fef5f6;
-        }
-
-        table tbody tr:hover {
-            background-color: #f9a7b0;
-            color: white;
         }
     </style>
 </head>
@@ -81,6 +93,28 @@
                             <td>方法を少しだけ書き進めた。</td>
                             <td>単語帳 100語、シャドーイング 30分</td>
                             <td>研究用サイトをつくった。</td>
+                        </tr>
+                        <tr>
+                            <td>2025/09/13</td>
+                            <td>Vocal expression of emotions in mammals: mechanisms of production and evidence</td>
+                            <td>方法を少しだけ書き進めた。</td>
+                            <td>なにもできなかった。</td>
+                            <td>Mendeleyに絶望し，Zoteroに移行した。</td>
+                        </tr>
+                        <tr>
+                            <td>2025/09/14</td>
+                            <td>なにも読めなかった。</td>
+                            <td>なにもできなかった。</td>
+                            <td>なにもできなかった。</td>
+                            <td>この日は安息日であった</td>
+                        </tr>
+                        <tr>
+                            <td>2025/09/15</td>
+                            <td>なにも読めなかった。</td>
+                            <td>なにもできなかった。</td>
+                            <td>なにもできなかった。</td>
+                            <td><a href="How_to_make_research_project.html">研究計画に関する記事を作成した。</a><br>
+                            Cursorを導入し，革命が起こった。</td>
                         </tr>
                     </tbody>
                 </table>
