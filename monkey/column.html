@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="根地嶋勇人の研究内容や業績を紹介する個人ウェブサイトです。">
+    <title>根地嶋勇人 - 所属大学・機関</title>
+     <link rel="stylesheet" href="style.css">
+    <style>
+        .speech-bubble-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            margin-top: 20px;
+            gap: 20px;
+            position: relative;
+        }
+
+        .speech-bubble {
+            background-color: #f9a7b0;
+            border-radius: 20px;
+            padding: 15px 20px;
+            position: relative;
+            max-width: 300px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .speech-bubble::after {
+            content: "";
+            position: absolute;
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 15px solid #f9a7b0;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            z-index: 10;
+        }
+
+        .speech-bubble p {
+            margin: 0;
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+
+        .monkey-image {
+            flex-shrink: 0;
+            z-index: 1;
+        }
+
+        .monkey-mascot {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 600px) {
+            .speech-bubble-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .speech-bubble::after {
+                right: 50%;
+                bottom: -15px;
+                transform: translateX(50%);
+                width: 0;
+                height: 0;
+                border-left: 10px solid transparent;
+                border-right: 10px solid transparent;
+                border-top: 15px solid #f9a7b0;
+                border-bottom: none;
+                z-index: 10;
+            }
+            
+            .monkey-mascot {
+                width: 75px;
+                height: 75px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="lang-switch">
+            <a href="index-en.html" style="color: white">[English]</a>
+        </div>
+        <div class="logo-container">
+            <img src="Calling-Monkey-2025-9-6 (1).png" alt="f(monkey)ロゴ" class="header-logo">
+        </div>
+        <p>根地嶋勇人　研究者個人website</p>
+    </header>
+
+    <nav>
+        <a href="index.html">プロフィール</a>
+        <a href="research.html">研究内容</a>
+        <a href="publications.html">研究業績</a>
+        <a href="column.html">コラム</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="column">
+            <h2>コラム (column)</h2>
+            
+            <h3>研究のコツ</h3>
+            <ul>
+                <li><a href="How_to_wright_method_behavioral_observation.html">動物行動観察研究の方法を書く際のテンプレート</a></li>
+                <li><a href="How_to_make_research_project.html">学生が路頭に迷わないための行動学研究計画のコツ</a></li>
+                <li><a href="to_show_smth.html">人にものを見せる前にすべきことチェックリスト</a></li>
+            </ul>
+
+            <h3>サイエンスコミュニケーション</h3>
+            <ul>
+                <li><a href="tail_gauge.html">【制作中】　ニホンザルってどんないきもの？
+                </a></li>
+            </ul>
+
+            <h3>研究暮らしの記録</h3>
+            <ul>
+                <li><a href="review_anti_anthropomorphism.html">読了メモ「動物に心は必要か　擬人主義に立ち向かう」</a></li>
+                <li><a href="What_I_did.html">今日研究のためになにをしたのか。</a></li>
+            </ul>
+
+            <h3>その他</h3>
+            <ul>
+                <li><a href="purpose.html">本サイトの狙い</a></li>
+            </ul>
+
+            <div class="speech-bubble-container">
+                <div class="speech-bubble">
+                    <p>他にも研究に関連するあれこれを更新予定です。</p>
+                </div>
+                <div class="monkey-image">
+                    <img src="猿の顔.JPG" alt="猿のマスコット" class="monkey-mascot">
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Yuto Nejishima. All Rights Reserved.</p>
+    </footer>
+
+</body>
+
+</html>

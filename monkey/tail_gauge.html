@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>タイワニホンザル</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .content-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .background-image {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .gauge-wrapper {
+            position: absolute;
+            top: 70%;
+            left: 60%;
+            width: 60%;
+            max-width: 240px;
+            height: auto;
+            aspect-ratio: 2.4 / 1;
+            z-index: 1;
+            /* transform: translate(-50%, -50%); */
+            /* ← この行を削除またはコメントアウト */
+        }
+
+        .text-container {
+            position: absolute;
+            top: 7%;
+            left: 27%;
+            transform: translateX(-50%);
+            width: 150px;
+            z-index: 5;
+            pointer-events: none;
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            font-family: 'k-font', sans-serif;
+        }
+
+        .text-container span {
+            position: absolute;
+            width: 100%;
+            text-align: right;
+            transition: opacity 0.5s ease;
+        }
+
+        #wavy-gauge-svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+            overflow: visible;
+        }
+
+        #wavy-gauge-svg path {
+            fill: none;
+        }
+
+        #gauge-border {
+            stroke: #000000;
+            stroke-width: 20;
+            stroke-linecap: round;
+            stroke-linejoin: miter;
+        }
+
+        #gauge-fill {
+            stroke: #DDAD81;
+            stroke-width: 12;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transition: stroke-dasharray 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .controls {
+            margin-top: 20px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .container2 {
+            width: 100%;
+            text-align: center;
+        }
+
+        /* === スライダーのスタイル ここから（重複を解消） === */
+
+        /* スライダー全体（共通設定） */
+        input[type="range"] {
+            display: block;
+            width: 60%;
+            max-width: 400px;
+            /* スライダーがPCで大きくなりすぎないように最大幅を指定 */
+            height: 30px;
+            margin: 10px auto;
+            -webkit-appearance: none;
+            appearance: none;
+            background: transparent;
+            touch-action: none;
+        }
+
+        /* 溝（track）- Chrome, Safari, Edge 用 */
+        input[type="range"]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 10px;
+            background: #000000;
+            border-radius: 5px;
+            cursor: url("monkeypointer3.png") 21 5, pointer;
+        }
+
+        /* つまみ（thumb）- Chrome, Safari, Edge 用 */
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: #DDAD81;
+            /* 色をゲージと合わせました */
+            margin-top: -10px;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            cursor: url("monkeypointer3.png") 21 5, pointer;
+        }
+
+        /* 溝（track）- Firefox 用 */
+        input[type="range"]::-moz-range-track {
+            width: 100%;
+            height: 10px;
+            background: #000000;
+            border-radius: 5px;
+            cursor: url("monkeypointer3.png") 21 5, pointer;
+        }
+
+        /* つまみ（thumb）- Firefox 用 */
+        input[type="range"]::-moz-range-thumb {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            background: #DDAD81;
+            border: none;
+            box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+            cursor: url("monkeypointer3.png") 21 5, pointer;
+        }
+
+        /* === スライダーのスタイル ここまで === */
+
+        /* スライダー下のラベル */
+        .slider-label {
+            display: block;
+            margin-top: 5px;
+            font-family: 'k-font', sans-serif;
+            font-size: 25px;
+            color: #333;
+            /* スライダーの色に合わせて変更 */
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="lang-switch">
+            <a href="index-en.html" style="color: white">[English]</a>
+        </div>
+        <div class="logo-container">
+            <img src="Calling-Monkey-2025-9-6 (1).png" alt="f(monkey)ロゴ" class="header-logo">
+        </div>
+        <p>根地嶋勇人　研究者個人website</p>
+    </header>
+
+    <nav>
+        <a href="index.html">プロフィール</a>
+        <a href="research.html">研究内容</a>
+        <a href="publications.html">研究業績</a>
+        <a href="column.html">コラム</a>
+    </nav>
+
+
+    <div class="container2">
+        <div class="content-wrapper">
+            <img src="tail_gauge.png" alt="背景画像" class="background-image">
+
+            <div class="gauge-wrapper">
+                <svg id="wavy-gauge-svg">
+
+                    <defs>
+                        <filter id="rough-texture" x="-50%" y="-50%" width="200%" height="200%">
+                            <feTurbulence type="fractalNoise" baseFrequency="0.04 0.08" numOctaves="5" result="noise" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="5" xChannelSelector="R"
+                                yChannelSelector="G" />
+                        </filter>
+                    </defs>
+                </svg>
+            </div>
+            <div class="text-container">
+                <span id="text-nihonzaru">ニホンザル</span>
+                <span id="text-akagezaru">タイワンザル</span>
+            </div>
+        </div>
+
+        <div class="controls">
+            <input type="range" id="percentage-slider" min="0" max="100" value="75">
+            <label for="percentage-slider" class="slider-label">しっぽの長さ</label>
+        </div>
+
+
+        <script src="tail_gauge.js"></script>
+
+    </div>
+
+
+
+    <footer>
+        <p>&copy; 2025 Yuto Nejishima. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
