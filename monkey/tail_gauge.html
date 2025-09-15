@@ -161,6 +161,28 @@
             /* スライダーの色に合わせて変更 */
             font-weight: bold;
         }
+
+        /* 説明文のスタイル */
+        .explanation-text {
+            margin-top: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 20px;
+            border: 2px solid #DDAD81;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .explanation-text p {
+            font-family: 'k-font', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+            text-align: left;
+            margin: 0;
+        }
     </style>
 </head>
 
@@ -209,6 +231,9 @@
         <div class="controls">
             <input type="range" id="percentage-slider" min="0" max="100" value="75">
             <label for="percentage-slider" class="slider-label">しっぽの長さ</label>
+            <div class="explanation-text">
+                <p>ニホンザルの尻尾は短いです。ニホンザルはヒト以外の霊長類で最北に生息するスノーモンキーとして有名です。短い尻尾は手先のような体積に対して表面積が大きい冷えやすい場所を減らす，寒冷地適応の結果と考えられています。</p>
+            </div>
         </div>
 
 
