@@ -1,3 +1,23 @@
+a:hover {
+  cursor: url('monkeypointer3.png') 21 5, pointer;
+}
+
+/* === Table styling for What_I_did.html and similar === */
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+th, td {
+  border: 1px solid #aaa;
+  padding: 8px;
+}
+th:first-child, td:first-child {
+  width: 60px; /* 日付カラムを固定幅に */
+  white-space: nowrap;
+}
+th:last-child, td:last-child {
+  width: auto; /* 内容カラムは残りを使う */
+}
 @font-face {
   font-family: "k-font";
   src: url("keifont.woff");

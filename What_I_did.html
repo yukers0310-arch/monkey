@@ -6,49 +6,122 @@
     <meta name="description" content="根地嶋勇人の研究内容や業績を紹介する個人ウェブサイトです。">
     <title>根地嶋勇人 - 所属大学・機関</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Yomogi&family=Shippori+Mincho:wght@400;500&display=swap" rel="stylesheet">
     <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 0.9em;
-            table-layout: fixed;
+        .diary-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            padding: 1rem;
         }
 
-        table th,
-        table td {
-            border: 1px solid #f9a7b0;
-            padding: 12px 15px;
-            text-align: left;
-            vertical-align: top;
+        .diary-entry {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.2s;
         }
 
-        /* Date column: keep as short as possible without wrapping */
-        table th:first-child,
-        table td:first-child {
-            width: auto;
-            min-width: 12ch; /* ensure full date like 2025/09/15 fits */
-            white-space: nowrap;
+        .diary-entry:hover {
+            transform: translateY(-5px);
         }
 
-        /* Other columns: share remaining space and allow wrapping */
-        table th:not(:first-child),
-        table td:not(:first-child) {
-            word-break: break-word;
-            overflow-wrap: anywhere;
-        }
-
-        table th {
-            background-color: #fc929e;
-            color: white;
+        .diary-date {
             font-family: "k-font", sans-serif;
-            font-weight: bold;
-            -webkit-text-stroke: 0.1px rgb(49, 49, 49);
-            font-size: 1.5em;
+            color: #fc929e;
+            font-size: 1.2em;
+            margin-bottom: 1rem;
+            border-bottom: 2px dashed #fc929e;
+            padding-bottom: 0.5rem;
         }
 
-        table tbody tr:nth-child(even) {
-            background-color: #fef5f6;
+        .diary-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .diary-image {
+            width: 100%;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .diary-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .diary-text {
+            font-size: 1.2em;
+            line-height: 1.5;
+            background: #fff9f0;
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+            background-image: 
+                linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            border: 1px solid #e6d5c5;
+            font-family: 'Yomogi', 'Shippori Mincho', cursive;
+            color: #444;
+            text-shadow: 0.5px 0.5px 1px rgba(0,0,0,0.05);
+            letter-spacing: 0.05em;
+            font-weight: 400;
+        }
+
+        .diary-text::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(
+                45deg,
+                #fff9f0 12%,
+                transparent 12%,
+                transparent 88%,
+                #fff9f0 88%
+            );
+            background-size: 8px 8px;
+            background-position: -4px 0;
+        }
+
+        .diary-text p {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .diary-text ul {
+            list-style-type: none;
+            padding-left: 1rem;
+        }
+
+        .diary-text ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .diary-text ul li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: #fc929e;
+        }
+
+        @media (max-width: 768px) {
+            .diary-content {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -76,24 +149,26 @@
         <main>
             <section>
                 <h2>今日研究のためになにをしたのか。</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>日付</th>
-                            <th>今日のできたこと
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>2025/10/30</td>
-                            <td>今日は図書館に行って、ゴリラの論文の序論を読んだ。
-                                研究のマニュアルを作った。図書館に本を返した。
-                                zoteroに翻訳pluginを入れた。他大学の先生にメールを書いた。
-                                学外実習に関する予定を立てるなりした。
-                            </td>
-                        </td>
-                    </tbody>
-                </table>
+                <div class="diary-container">
+                    <article class="diary-entry">
+                        <div class="diary-date">2025年10月30日（水）</div>
+                        <div class="diary-content">
+                            <div class="diary-image">
+                                <img src="IMG_8354.jpg" 図書館での研究の様子" onerror="this.src='https://via.placeholder.com/400x300?text=今日の1枚'">
+                            </div>
+                            <div class="diary-text">
+                                <p><strong>今日の研究活動：</strong></p>
+                                <ul>
+                                    <p>今日は久しぶりに図書館で論文を読みました。なかなか、集中できて良かったです。
+                                        ゴリラの論文だったんですが、ゴリラの学名がGorilla gorilla gorillaなのは何度見てもシュール笑えてきます。
+                                        私も早くゴリラになりたいものです。
+                                        Zoteroに翻訳プラグインを導入したら、超高速で論文が読めるようになりました。便利な世の中ですね。</p>
+                                </ul>
+                                <p>感想：今日は特に文献整理が進み、研究の土台作りが着実に進んだ一日でした。</p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
             </section>
         </main>
 
