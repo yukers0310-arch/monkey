@@ -213,6 +213,11 @@ footer {
   margin-top: 20px;
   /* 上に少し余白を追加 */
 }
+
+.outreach-image-container img {
+  max-width: 100%;
+  height: auto;
+}
 a:hover {
   cursor: url('monkeypointer3.png') 21 5, pointer; 
 }
